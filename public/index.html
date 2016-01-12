@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!-- Declares meanMapApp as the starting Angular module -->
+<html class="no-js" ng-app="meanMapApp">
+<head>
+  <meta charset="UTF-8">
+  <title>::Tugas GIS MeanStack googleMapAPI::</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Holder JS -->
+  <script src="../bower_components/holderjs/holder.js"></script>
+
+  <!-- Google Maps API -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaU2J8Pb8CNhe9YZr7e2rVAEP1-C-JB08"></script>
+
+  <!-- Modernizr -->  
+  <script src="../bower_components/modernizr/bin/modernizr"></script>
+
+
+  <!-- JS Source -->
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
+
+  <!-- Angular Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/addCtrl.js"></script>
+  <script src="js/gservice.js"></script>
+
+</head>
+<body ng-controller="addCtrl">
+
+<div class="container">
+
+  <div class="header">
+        <ul class="nav nav-pills pull-right">
+            <li active><a href="">Bade Join.?</a></li>
+            <li disabled><a href="">Pados Rencang..?</a></li>
+        </ul>
+        <h3 class="text-muted">nyobiMap MeanStack</h3>
+    </div>
+
+  <!-- map and side panel -->
+  <div class="row content">
+    <!-- Google Map -->
+    <div class="col-md-7">
+      <div id="map" style="width:645px; height:645px"></div>
+    </div>
+    <!-- Side Panel -->
+    <div class="col-md-5">
+      <div class="panel panel-default">
+        <!-- Panel Title -->
+        <div class="panel-heading">
+          <h2 class="panel-title text-center">Join wonten Team</h2>
+        </div>
+        <!-- Panel Body -->
+        <div class="panel-body">
+          <!-- Create Form -->
+          <!-- novalidate disables HTML validation that Angular will control -->
+          <form name="addForm" novalidate>
+            <!-- Text boxes and other user inputs -->
+            <!-- Note: ng-model binds the values to Angular $scope -->
+
+            <div class="form-group">
+              <label for="username">jenengipun <span class="badge">niki diisi sedanten</span></label>
+              <input type="text" class="form-control" id="username" placeholder="..." ng-model="formData.username" required>
+            </div>
+
+            <label class="radio control-label">Gender njengan?</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="radiomale" value="Male" ng-model="formData.gender">
+                    Prio
+                </label>
+            </div>
+
+            <div class="radio">
+              <label>
+                <input type="radio" id="radiofemale" name="optionsRadios" value="Female" ng-model="formData.gender">
+                Wanito
+              </label>
+            </div>
+
+            <div class="radio">
+              <label>
+                <input type="radio" id="radioneither" name="optionsRadios" value="Wario" ng-model="formData.gender">
+                Njenengan species nopo.?
+              </label>
+            </div>
+            
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input type="number" id="age" class="form-control" placeholder="135" ng-model="formData.age" required>
+            </div>
+
+            <div class="form-group">
+              <label for="language">Language</label>
+              <input type="text" class="form-control" id="language" placeholder="Jowo sanes bahasa pemrograman" ng-model="formData.favlang" required>
+            </div>
+
+            <div class="form-group">
+              <label for="latitude">Latitude</label>
+              <input type="text" class="form-control" id="latitude" value="-7.739967" ng-model="formData.latitude" readonly>
+            </div>
+
+            <div class="form-group">
+              <label for="latitude">Longitude</label>
+              <input type="text" class="form-control" id="longitude" value="110.664568" ng-model="formData.longitude" readonly>
+            </div>
+
+            <div class="form-group">
+              <label for="verified">verifikasi lewat HTML5?
+                <span><button class="btn btn-default btn-xs"><span class="glyphicon glyphicon-refresh"></span></button></span>
+                <input type="text" class="form-control" id="verified" placeholder="Mboten? (nuwun sewuu nggih....)" ng-model="formData.htmlverified" readonly>
+              </label>
+            </div>
+
+            <!-- Submit button. -->
+            <!-- Note: the submit tied to createUser() function from addCtrl. -->
+            <!-- Note: ng-disabled logic prevents early submits. -->
+            <button type="submit" class="btn btn-danger btn-block" ng-click="createUser()" ng-disabled="addForm.$invalid">Submit</button>
+
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <hr/>
+  
+  <!-- Footer -->
+  <div class="footer">
+        <p class="text-center"><span class="glyphicon glyphicon-check"></span> Created by Ahmed Haque for Scotch IO -
+            <a href="https://scotch.io/">App Tutorial</a> | <a href="https://github.com/afhaque/MeanMapAppV2.0">Github Repo</a></p>
+  </div>
+
+</div>
+  
+</body>
+</html>
