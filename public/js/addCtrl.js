@@ -1,6 +1,6 @@
 var addCtrl = angular.module('addCtrl', ['geolocation', 'gservice']);
 
-addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, gservice){
+addCtrl.controller('addCtrl', function($scope, $http, $rootScope, $firebaseArray, geolocation, gservice){
 
     // Initializes Variables
     // ----------------------------------------------------------------------------
@@ -9,7 +9,7 @@ addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, g
     var lat = 0;
     var long = 0;
 
-    // Set initial coordinates to the center of the US
+    // Set initial coordinates to the center of the klte
     $scope.formData.latitude = -7.739967;
     $scope.formData.longitude = 110.664568;
 
@@ -59,7 +59,13 @@ addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, g
             location: [$scope.formData.longitude, $scope.formData.latitude],
             htmlverified: $scope.formData.htmlverified
         };
+        //save to fb
+        //$scope.message = $firebaseArray(userData);
+        //var fbData = new Firebase('https://fendi.firebaseio.com/');
+        var fbData = new $firebase ('https://fendi.firebaseio.com/');
+            $scope.message = $firebaseArray(fbData);
 
+        //
         // Saves the user data to the db
         $http.post('/users', userData)
             .success(function (data) {
